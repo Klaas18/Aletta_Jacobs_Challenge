@@ -1,0 +1,22 @@
+{
+      "Value": [
+         {
+              "Name": "Kees",
+              "Height": 234,
+              "Width": 143,
+              "Weight": 35
+         },
+         {
+              "Name": "Max",
+              "Height": 138,
+              "Width": 99,
+              "Weight": 75
+         },
+         {
+              "Name": "Adi",
+              "Height": 178,
+              "Width": 60,
+              "Weight": 68
+         }
+      ]
+}
