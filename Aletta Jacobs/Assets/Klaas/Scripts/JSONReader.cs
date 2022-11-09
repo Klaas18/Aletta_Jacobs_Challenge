@@ -1,14 +1,29 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+
 
 public class JSONReader : MonoBehaviour
 {
     [Header("Data")]
     public TextAsset textJSON;
-    [SerializeField] private TextMeshProUGUI text;
-   public List<int> heightList = new List<int>();
+    public static TextAsset s_textJSON;
+    [SerializeField] private static TextMeshProUGUI text;
+    public static List<int> heightList = new List<int>();
+
+    public void Awake()
+    {
+        s_textJSON = textJSON;
+
+        myValueList = JsonUtility.FromJson<ValueList>(s_textJSON.text);
+
+        //foreach (var a in myValueList.Value)
+        //{
+        //    text.text += "Height =" + a.Height + "\n";
+        //    heightList.Add(a.Height);
+        //}
+        //heightList.Sort();
+    }
 
     [System.Serializable]
     public class Value
@@ -25,18 +40,20 @@ public class JSONReader : MonoBehaviour
         public Value[] Value;
     }
 
-    public ValueList myValueList = new ValueList();
-  
-    void Start()
-    {
-        myValueList = JsonUtility.FromJson<ValueList>(textJSON.text);
+    public static ValueList myValueList = new ValueList();
 
-        foreach (var a in myValueList.Value)
-        {
-            text.text += "Height ="+a.Height+"\n";
-            heightList.Add(a.Height);
-        }
-        heightList.Sort();
-   
+    static void Start()
+    {
+        //myValueList = JsonUtility.FromJson<ValueList>(s_textJSON.text);
+
+        //foreach (var a in myValueList.Value)
+        //{
+        //    text.text += "Height =" + a.Height + "\n";
+        //    heightList.Add(a.Height);
+        //}
+        //heightList.Sort();
+
     }
 }
+
+

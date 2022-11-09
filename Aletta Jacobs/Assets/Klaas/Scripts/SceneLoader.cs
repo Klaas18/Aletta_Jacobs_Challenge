@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +9,7 @@ public class SceneLoader : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Escape))
         {
             SceneManager.LoadScene(0);
         }
@@ -19,6 +17,6 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(int i)
     {
-        SceneManager.LoadScene(i);   
+        SceneManager.LoadScene(i);
     }
 }
