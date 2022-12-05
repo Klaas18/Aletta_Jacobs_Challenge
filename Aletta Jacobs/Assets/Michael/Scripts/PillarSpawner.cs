@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class PillarSpawner : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PillarSpawner : MonoBehaviour
         for (int i = 0; i < size; i++)
         {
             GameObject cube = Instantiate(prefab, spawnLoc, new Quaternion());
+            
             cube.transform.localScale.Set(5, 5, 5);
             cube.transform.localScale = new Vector3(5, 5, 5);
             cubesToSpawn.SetValue(cube, i);
@@ -33,13 +35,14 @@ public class PillarSpawner : MonoBehaviour
 
         foreach (var a in JSONReader.myValueList.Value)
         {
-            heightF.SetValue(a.Height, index);
+            heightF.SetValue(a.Height / 10, index);
             index++;
         }
 
         for (int i = 0; i < cubesToSpawn.Length; i++)
         {
             cubesToSpawn[i].transform.localScale = new Vector3(cubesToSpawn[i].transform.localScale.x, heightF[i]/10, cubesToSpawn[1].transform.localScale.z);
+           // cubesToSpawn[i].GetComponent<TextMeshProUGUI>()
         }
 
 

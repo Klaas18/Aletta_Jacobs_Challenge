@@ -407,6 +407,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LengtePillar
       objectReference: {fileID: 0}
+    - target: {fileID: 4035793406596709480, guid: 456b3ea7134ce4c4eb2ad05b062edbc1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404225586616127475, guid: 456b3ea7134ce4c4eb2ad05b062edbc1, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 456b3ea7134ce4c4eb2ad05b062edbc1, type: 3}
 --- !u!1 &1205273765
@@ -438,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c3b6e6de61c064a8e1cfb1d36b25f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4035793406596709480, guid: 456b3ea7134ce4c4eb2ad05b062edbc1, type: 3}
+  prefab: {fileID: 6030420696578592976, guid: 995b288b64dcc93449db26f142edf275, type: 3}
   cubesToSpawn: []
   spawnLoc: {x: 0, y: 0, z: 0}
   size: 0

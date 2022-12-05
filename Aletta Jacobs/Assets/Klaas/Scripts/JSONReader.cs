@@ -17,12 +17,12 @@ public class JSONReader : MonoBehaviour
 
         myValueList = JsonUtility.FromJson<ValueList>(s_textJSON.text);
 
-        //foreach (var a in myValueList.Value)
-        //{
+        foreach (var a in myValueList.Value)
+        {
         //    text.text += "Height =" + a.Height + "\n";
-        //    heightList.Add(a.Height);
-        //}
-        //heightList.Sort();
+          heightList.Add(a.Height);
+        }
+       // heightList.Sort();
     }
 
     [System.Serializable]
