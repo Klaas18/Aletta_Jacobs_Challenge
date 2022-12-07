@@ -31,6 +31,7 @@ public class JSONReader : MonoBehaviour
         public string Name;
         public int Height;
         public int Width;
+
         public int Weight;
     }
 
