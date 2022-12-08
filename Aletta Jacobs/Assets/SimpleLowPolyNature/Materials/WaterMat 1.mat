@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterMat
+  m_Name: WaterMat 1
   m_Shader: {fileID: 4800000, guid: 5da8b0368ef6e224f81430e29e23cd96, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -72,7 +72,7 @@ Material:
     - _TessValue: 6
     - _WaterDepth: 0.99
     - _WaterFalloff: -10
-    - _WaterSmoothness: 0.3
+    - _WaterSmoothness: 0.92
     - _WaterSpecular: 0.3
     - _WavesAmount: 8
     - _WavesAmplitude: 0.01
@@ -81,7 +81,7 @@ Material:
     - _Color: {r: 0.4292453, g: 0.7559531, b: 1, a: 1}
     - _Color0: {r: 0, g: 0.6749488, b: 0.8088235, a: 0}
     - _Color1: {r: 0, g: 0.048731543, b: 0.22794023, a: 0}
-    - _DeepColor: {r: 0.2511125, g: 0.7187613, b: 0.9339623, a: 1}
+    - _DeepColor: {r: 1, g: 0.15686275, b: 0.51284885, a: 1}
     - _ShalowColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
