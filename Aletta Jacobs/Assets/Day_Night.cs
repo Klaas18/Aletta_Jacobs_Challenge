@@ -5,17 +5,35 @@ using UnityEngine;
 
 public class Day_Night : MonoBehaviour
 {
+    [Header("Lighting Manager")]
+    [SerializeField] LightingManager lightingManager;
+    [Header("Toggle")]
     [SerializeField] Toggle toggle;
     Vector3 rotateDay = new Vector3(50, -30, 0);
     Vector3 rotateNight = new Vector3(-90, -30, 0);
-   public void ChangeTime()
+
+    private void Update()
     {
+        RotateTo();
+    }
+    public void ChangeTime()
+    {
+      
         if(toggle.isOn)
         {
-            gameObject.transform.rotation = Quaternion.Euler(rotateNight);
+            lightingManager.isTimeRunning = true;
+            lightingManager.TimeOfDay = 20;
+                             //   gameObject.transform.localRotation = Quaternion.Euler(rotateNight);
         } else
         {
-            gameObject.transform.rotation = Quaternion.Euler(rotateDay);
+           // lightingManager.isTimeRunning = false;
+            lightingManager.TimeOfDay = 12;
+          //  gameObject.transform.rotation = Quaternion.Euler(rotateDay);
         }
+    }
+
+    public void RotateTo()
+    {
+     
     }
 }

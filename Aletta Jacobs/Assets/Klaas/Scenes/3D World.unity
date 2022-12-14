@@ -15,12 +15,12 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogColor: {r: 0.5911091, g: 0.5799341, b: 0.5799341, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 0.60486805, b: 0.60486805, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4394488, g: 0.4877978, b: 0.56803334, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 67611734}
   - component: {fileID: 67611733}
   - component: {fileID: 67611735}
+  - component: {fileID: 67611736}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -370,7 +371,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.74701977, g: 0.9687252, b: 0.7100688, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -428,7 +429,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67611732}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.070914134, y: 0.5791458, z: -0.8105517, w: 0.050668724}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -448,7 +449,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca3c60afe96e1e4d87b0504834018e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightingManager: {fileID: 67611736}
   toggle: {fileID: 1533040061}
+--- !u!114 &67611736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67611732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1b13b2bdc06b1438220ec11c8d7521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DirectionalLight: {fileID: 67611733}
+  Preset: {fileID: 11400000, guid: a5d517d4a67d9fb4bbbd1ee60aa6dff0, type: 2}
+  TimeOfDay: 13.260518
+  isTimeRunning: 0
 --- !u!114 &75185571 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7897834716869976222, guid: 7c2d804034d524940bf2e3ed5b2313c6, type: 3}
@@ -1258,6 +1276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggle: {fileID: 388316268}
+  scale: 0
 --- !u!114 &148783494
 MonoBehaviour:
   m_ObjectHideFlags: 0
