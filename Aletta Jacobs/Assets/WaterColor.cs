@@ -19,11 +19,11 @@ public class WaterColor : MonoBehaviour
     {
         if (toggle.isOn)
         {        
-           meshR.material = newMat;
+            meshR.material = newMat;
         }
         else
         {
-           meshR.material = oldMat;
+            meshR.material = oldMat;
         }
     }
 }
