@@ -9,29 +9,29 @@ public class DataReader : MonoBehaviour
 {
     public TextAsset jsonFile;
     //private int[] averageAge;
+    public List<float> averageAgeL = new List<float>();
+    public List<float> averageAgeMaleL = new List<float>();
+    public List<float> averageAgeFemaleL = new List<float>();
 
+    public List<float> averageHeightL = new List<float>();
+    public List<float> averageHeightMaleL = new List<float>();
+    public List<float> averageHeightFemaleL = new List<float>();
+
+    public List<float> averageWeightL = new List<float>();
+    public List<float> averageWeightMaleL = new List<float>();
+    public List<float> averageWeightFemaleL = new List<float>();
+
+    public List<float> averageSleepQualityL = new List<float>();
+    public List<float> averageSleepQualityMaleL = new List<float>();
+    public List<float> averageSleepQualityFemaleL = new List<float>();
+
+    public List<float> averageSportMinutesL = new List<float>();
+    public List<float> averageSportMinutesMaleL = new List<float>();
+    public List<float> averageSportMinutesFemaleL = new List<float>();
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        List<float> averageAgeL = new List<float>();
-        List<float> averageAgeMaleL = new List<float>();
-        List<float> averageAgeFemaleL = new List<float>();
 
-        List<float> averageHeightL = new List<float>();
-        List<float> averageHeightMaleL = new List<float>();
-        List<float> averageHeightFemaleL = new List<float>();
-
-        List<float> averageWeightL = new List<float>();
-        List<float> averageWeightMaleL = new List<float>();
-        List<float> averageWeightFemaleL = new List<float>();
-
-        List<float> averageSleepQualityL = new List<float>();
-        List<float> averageSleepQualityMaleL = new List<float>();
-        List<float> averageSleepQualityFemaleL = new List<float>();
-
-        List<float> averageSportMinutesL = new List<float>();
-        List<float> averageSportMinutesMaleL = new List<float>();
-        List<float> averageSportMinutesFemaleL = new List<float>();
 
         int amountOfMales = 0;
         int amountOfFemales = 0;
