@@ -13,5 +13,7 @@ public class Follow_Player : MonoBehaviour
     void Update()
     {
         transform.position = player.transform.position + new Vector3(0, 1, 0);
+        gameObject.transform.Rotate(0, Input.GetAxis("Horizontal"), 0);
+        //transform.rotation = player.transform.rotation;
     }
 }

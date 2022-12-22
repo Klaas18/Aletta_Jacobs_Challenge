@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float playerSpeed = 2.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
-
+    private float _rotationSpeed = 100;
     private void Start()
     {
         controller = gameObject.AddComponent<CharacterController>();
@@ -18,14 +18,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        Vector3 NextDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        //if (NextDir != Vector3.zero)
+        //    transform.rotation = Quaternion.LookRotation(NextDir);
+        //controller.Move(NextDir / 8);
+
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));//Input.GetAxis("Horizontal")
         controller.Move(move * Time.deltaTime * playerSpeed);
+
+        Vector3 rotation = new Vector3(0, Input.GetAxis("Horizontal") * _rotationSpeed * Time.deltaTime, 0);
+        gameObject.transform.rotation = Quaternion.LookRotation(NextDir);
+       // gameObject.transform.Rotate(rotation);
+
 
         if (move != Vector3.zero)
         {

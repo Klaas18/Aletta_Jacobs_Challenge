@@ -14,18 +14,18 @@ public class TreeColor : MonoBehaviour
         if (toggle.isOn)
         {
             oldTreeH.SetActive(true);
-            for (int i = 0; i < newTrees.Length; i++)
-            {
-                newTrees[i].SetActive(false);
-            }
+            //for (int i = 0; i < newTrees.Length; i++)
+            //{
+            //    newTrees[i].SetActive(false);
+            //}
         }
         else
         {
             oldTreeH.SetActive(false);
-            for (int i = 0; i < newTrees.Length; i++)
-            {
-                newTrees[i].SetActive(true);
-            }
+            //for (int i = 0; i < newTrees.Length; i++)
+            //{
+            //    newTrees[i].SetActive(true);
+            //}
         }
     }
 }

@@ -23,12 +23,12 @@ public class Day_Night : MonoBehaviour
         {
             lightingManager.isTimeRunning = true;
             lightingManager.TimeOfDay = 20;
-                             //   gameObject.transform.localRotation = Quaternion.Euler(rotateNight);
+                             
         } else
         {
-           // lightingManager.isTimeRunning = false;
+           
             lightingManager.TimeOfDay = 12;
-          //  gameObject.transform.rotation = Quaternion.Euler(rotateDay);
+         
         }
     }
 
