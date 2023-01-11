@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraDrag : MonoBehaviour
 {
-    public float dragSpeed = 2;
+    public float lookSensitivity = 2;
     private Vector3 dragOrigin;
 
     public GameObject player;
@@ -18,7 +18,7 @@ public class CameraDrag : MonoBehaviour
 
         if (!Input.GetMouseButton(0)) return;
 
-        player.transform.eulerAngles += dragSpeed * new Vector3(0, Input.GetAxis("Mouse X"), 0);
-        myCamera.transform.eulerAngles += dragSpeed * new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+        player.transform.eulerAngles += lookSensitivity * new Vector3(0, Input.GetAxis("Mouse X"), 0);
+        myCamera.transform.eulerAngles += lookSensitivity * new Vector3(-Input.GetAxis("Mouse Y"), 0, 0);
     }
 }
