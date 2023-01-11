@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
 
+
+
     private void Start()
     {
         controller = gameObject.AddComponent<CharacterController>();
@@ -18,19 +20,48 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Vector3 move = new Vector3();
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * playerSpeed);
 
-        if (move != Vector3.zero)
+
+        //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        //Vooruit
+        if (Input.GetKey(KeyCode.W))
         {
-            gameObject.transform.forward = move;
+            move = transform.TransformDirection(Vector3.forward);
+            controller.Move(move * Time.deltaTime * playerSpeed);
         }
+        //Lonks
+        if (Input.GetKey(KeyCode.A))
+        {
+            move = transform.TransformDirection(Vector3.left);
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
+        //Achteruit
+        if (Input.GetKey(KeyCode.S))
+        {
+            move = transform.TransformDirection(Vector3.back);
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
+        //Rechts
+        if (Input.GetKey(KeyCode.D))
+        {
+            move = transform.TransformDirection(Vector3.right);
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
+
+        //if (move != Vector3.zero)
+        //{
+        //    gameObject.transform.forward = move;
+        //}
+
+
 
         // Changes the height position of the player..
         if (Input.GetKeyDown(KeyCode.Space) && groundedPlayer)
