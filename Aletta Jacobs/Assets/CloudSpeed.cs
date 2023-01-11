@@ -6,29 +6,46 @@ using UnityEngine;
 
 public class CloudSpeed : MonoBehaviour
 {
+    [Header("Particle System")]
     [SerializeField] ParticleSystem clouds1;
     [SerializeField] ParticleSystem clouds2;
-    
+    [Header("UI")]
     [SerializeField] Toggle toggle;
-    // Start is called before the first frame update
-    void Start()
-    {
-          
-    }
+    [SerializeField] bool isON;
+    [Header("Speed")]
+    [SerializeField, Range(0, 10)] float speedCloud;
+    [SerializeField, Range(0.5f, 100)] float simuSpeed;
 
-    public void ChangeCloud()
+    private void FixedUpdate()
     {
         var main = clouds1.main;
         var main2 = clouds2.main;
-        if (toggle.isOn)
+        if (isON)
         {
-            main.simulationSpeed = 100;
-            main2.simulationSpeed = 100;
-        } else
+            simuSpeed += speedCloud * Time.deltaTime;
+           simuSpeed = Mathf.Clamp(simuSpeed, 0.5f, 100);
+            main.simulationSpeed = simuSpeed;
+            main2.simulationSpeed = simuSpeed;
+        }
+        else if(!isON)
         {
-            main.simulationSpeed = 0.5f;
-            main2.simulationSpeed = 0.5f;
+            simuSpeed -= speedCloud * Time.deltaTime;
+            simuSpeed = Mathf.Clamp(simuSpeed, 0.5f, 100);
+            main.simulationSpeed = simuSpeed;
+            main2.simulationSpeed = simuSpeed;
         }
               
+    }
+
+    public void ChangeCloud()
+    {         
+        if (toggle.isOn)
+        {
+            isON = true;  
+        }
+        else
+        {
+            isON = false;
+        }            
     }
 }
