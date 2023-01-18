@@ -13,65 +13,78 @@ public class PlayerController : MonoBehaviour
 
 
 
+    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private FixedJoystick _joystick;
+    [SerializeField] private Animator _animator;
+
+    [SerializeField] private float _moveSpeed;
+
     private void Start()
     {
         controller = gameObject.AddComponent<CharacterController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 move = new Vector3();
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
+        //Vector3 move = new Vector3();
+        //groundedPlayer = controller.isGrounded;
+        //if (groundedPlayer && playerVelocity.y < 0)
+        //{
+        //    playerVelocity.y = 0f;
+        //}
 
 
 
         //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        
+        Vector3 move = new Vector3(_joystick.Horizontal * (_moveSpeed * Time.deltaTime), _rigidbody.velocity.y, _joystick.Vertical * (_moveSpeed * Time.deltaTime));
+        controller.Move(move);
 
-        //Vooruit
-        if (Input.GetKey(KeyCode.W))
-        {
-            move = transform.TransformDirection(Vector3.forward);
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }
-        //Lonks
-        if (Input.GetKey(KeyCode.A))
-        {
-            move = transform.TransformDirection(Vector3.left);
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }
-        //Achteruit
-        if (Input.GetKey(KeyCode.S))
-        {
-            move = transform.TransformDirection(Vector3.back);
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }
-        //Rechts
-        if (Input.GetKey(KeyCode.D))
-        {
-            move = transform.TransformDirection(Vector3.right);
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }
 
-        //if (move != Vector3.zero)
+
+        ////Vooruit
+        //if (Input.GetKey(KeyCode.W))
         //{
-        //    gameObject.transform.forward = move;
+        //    move = transform.TransformDirection(Vector3.forward);
+        //    controller.Move(move * Time.deltaTime * playerSpeed);
+        //}
+        ////Lonks
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    move = transform.TransformDirection(Vector3.left);
+        //    controller.Move(move * Time.deltaTime * playerSpeed);
+        //}
+        ////Achteruit
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    move = transform.TransformDirection(Vector3.back);
+        //    controller.Move(move * Time.deltaTime * playerSpeed);
+        //}
+        ////Rechts
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    move = transform.TransformDirection(Vector3.right);
+        //    controller.Move(move * Time.deltaTime * playerSpeed);
         //}
 
+        ////if (move != Vector3.zero)
+        ////{
+        ////    gameObject.transform.forward = move;
+        ////}
 
 
-        // Changes the height position of the player..
-        if (Input.GetKeyDown(KeyCode.Space) && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
 
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        //// Changes the height position of the player..
+        //if (Input.GetKeyDown(KeyCode.Space) && groundedPlayer)
+        //{
+        //    playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        //}
+
+        //playerVelocity.y += gravityValue * Time.deltaTime;
+        //controller.Move(playerVelocity * Time.deltaTime);
+
+
+        //_rigidbody.velocity = new Vector3(_joystick.Horizontal * (_moveSpeed * Time.deltaTime), _rigidbody.velocity.y, _joystick.Vertical * (_moveSpeed * Time.deltaTime));
+
     }
 }
