@@ -9113,7 +9113,6 @@ GameObject:
   - component: {fileID: 922745247}
   - component: {fileID: 922745246}
   - component: {fileID: 922745245}
-  - component: {fileID: 922745249}
   - component: {fileID: 922745244}
   - component: {fileID: 922745243}
   - component: {fileID: 922745248}
@@ -9136,7 +9135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7760469b41fe6b04ba86f2e9d1d92a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 922745249}
+  _rigidbody: {fileID: 0}
   _joystick: {fileID: 1784375678}
   _animator: {fileID: 0}
   _moveSpeed: 0.02
@@ -9240,22 +9239,6 @@ MonoBehaviour:
   _joystick: {fileID: 138487185}
   _animator: {fileID: 0}
   _moveSpeed: 150
---- !u!54 &922745249
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922745242}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 16
-  m_CollisionDetection: 0
 --- !u!1001 &923893079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16465,7 +16448,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1615955622
 MonoBehaviour:
@@ -21873,6 +21856,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3190694249349175934, guid: 08a76755a5e9e1841bb143dc9c794af0, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190694250280271466, guid: 08a76755a5e9e1841bb143dc9c794af0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190694250280271466, guid: 08a76755a5e9e1841bb143dc9c794af0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190694250280271466, guid: 08a76755a5e9e1841bb143dc9c794af0, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4217123743172087684, guid: 08a76755a5e9e1841bb143dc9c794af0, type: 3}

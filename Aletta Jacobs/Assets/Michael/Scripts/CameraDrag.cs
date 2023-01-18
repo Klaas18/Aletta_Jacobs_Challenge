@@ -26,7 +26,7 @@ public class CameraDrag : MonoBehaviour
 
         //player.transform.eulerAngles += lookSensitivity * new Vector3(0, Input.GetAxis("Mouse X"), 0);
         myCamera.transform.eulerAngles -= new Vector3(_joystick.Vertical * (_moveSpeed * Time.deltaTime),0);
-        myCamera.transform.eulerAngles += new Vector3(0, _joystick.Horizontal * (_moveSpeed * Time.deltaTime));
+        player.transform.eulerAngles += new Vector3(0, _joystick.Horizontal * (_moveSpeed * Time.deltaTime));
 
 
     }
