@@ -12,7 +12,7 @@ public class CameraDrag : MonoBehaviour
     [SerializeField] private FixedJoystick _joystick;
     [SerializeField] private Animator _animator;
 
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] public float _moveSpeed;
 
     void FixedUpdate()
     {
