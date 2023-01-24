@@ -108,9 +108,11 @@ public class DebugCanvas : MonoBehaviour
         if (joyStickToggle.isOn == true)
         {
             joyStickCanvas.SetActive(true);
+            playerController.isUsingJoystick = true;
         } else if(joyStickToggle.isOn == false)
         {
             joyStickCanvas.SetActive(false);
+            playerController.isUsingJoystick = false;
         }
         
     }

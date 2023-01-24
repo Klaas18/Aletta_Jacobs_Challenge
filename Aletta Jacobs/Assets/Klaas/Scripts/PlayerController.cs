@@ -36,61 +36,68 @@ public class PlayerController : MonoBehaviour
         //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
 
+        if (isUsingJoystick)
+        {
+            //Vooruit
+            if (_joystick.Vertical > 0.1)
+            {
+                move = transform.TransformDirection(Vector3.forward);
+                controller.Move(move * Time.deltaTime * playerSpeed);
+            }
+            //Lonks
+            if (_joystick.Horizontal < -0.1)
+            {
+                move = transform.TransformDirection(Vector3.left);
+                controller.Move(move * Time.deltaTime * playerSpeed);
+            }
+            //Achteruit
+            if (_joystick.Vertical < -0.1)
+            {
+                move = transform.TransformDirection(Vector3.back);
+                controller.Move(move * Time.deltaTime * playerSpeed);
+            }
+            //Rechts
+            if (_joystick.Horizontal > 0.1)
+            {
+                move = transform.TransformDirection(Vector3.right);
+                controller.Move(move * Time.deltaTime * playerSpeed);
+            }
+        }
+        else
+        {
+            //Vooruit
+            if (Input.GetKey(KeyCode.W))
+            {
+                move = transform.TransformDirection(Vector3.forward);
+                controller.Move(move * Time.deltaTime * playerSpeed);
+            }
+            //Lonks
+            if (Input.GetKey(KeyCode.A))
+            {
+                move = transform.TransformDirection(Vector3.left);
+                controller.Move(move * Time.deltaTime * playerSpeed);
+            }
+            //Achteruit
+            if (Input.GetKey(KeyCode.S))
+            {
+                move = transform.TransformDirection(Vector3.back);
+                controller.Move(move * Time.deltaTime * playerSpeed);
+            }
+            //Rechts
+            if (Input.GetKey(KeyCode.D))
+            {
+                move = transform.TransformDirection(Vector3.right);
+                controller.Move(move * Time.deltaTime * playerSpeed);
+            }
+        }
 
-        //Vooruit
-        if (_joystick.Vertical > 0.1)
-        {
-            move = transform.TransformDirection(Vector3.forward);
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }
-        //Lonks
-        if (_joystick.Horizontal < -0.1)
-        {
-            move = transform.TransformDirection(Vector3.left);
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }
-        //Achteruit
-        if (_joystick.Vertical < -0.1)
-        {
-            move = transform.TransformDirection(Vector3.back);
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }
-        //Rechts
-        if (_joystick.Horizontal > 0.1)
-        {
-            move = transform.TransformDirection(Vector3.right);
-            controller.Move(move * Time.deltaTime * playerSpeed);
-        }
 
-        ////Vooruit
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    move = transform.TransformDirection(Vector3.forward);
-        //    controller.Move(move * Time.deltaTime * playerSpeed);
-        //}
-        ////Lonks
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    move = transform.TransformDirection(Vector3.left);
-        //    controller.Move(move * Time.deltaTime * playerSpeed);
-        //}
-        ////Achteruit
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    move = transform.TransformDirection(Vector3.back);
-        //    controller.Move(move * Time.deltaTime * playerSpeed);
-        //}
-        ////Rechts
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    move = transform.TransformDirection(Vector3.right);
-        //    controller.Move(move * Time.deltaTime * playerSpeed);
-        //}
 
-        //if (move != Vector3.zero)
-        //{
-        //    gameObject.transform.forward = move;
-        //}
+
+        // if (move != Vector3.zero)
+        // {
+        //     gameObject.transform.forward = move;
+        // }
 
 
 
