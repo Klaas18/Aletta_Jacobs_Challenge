@@ -33,10 +33,6 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Debug.Log("-=- JoyStick -=-");
-        Debug.Log("Vertical: " + _joystick.Vertical);
-        Debug.Log("Horizontal" + _joystick.Horizontal);
-
         //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
 
