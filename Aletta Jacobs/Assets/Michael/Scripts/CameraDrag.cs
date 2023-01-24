@@ -2,15 +2,12 @@ using UnityEngine;
 
 public class CameraDrag : MonoBehaviour
 {
-    public float lookSensitivity = 2;
     private Vector3 dragOrigin;
 
     public GameObject player;
     public Camera myCamera;
 
-    [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private FixedJoystick _joystick;
-    [SerializeField] private Animator _animator;
 
     [SerializeField] public float _moveSpeed;
 

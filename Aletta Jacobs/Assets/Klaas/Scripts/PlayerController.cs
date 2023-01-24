@@ -12,19 +12,15 @@ public class PlayerController : MonoBehaviour
     private float gravityValue = -9.81f;
 
     public bool isUsingJoystick = true;
-
-    [SerializeField] private Rigidbody _rigidbody;
+    
     [SerializeField] private FixedJoystick _joystick;
-    [SerializeField] private Animator _animator;
-
-    [SerializeField] private float _moveSpeed;
 
     private void Start()
     {
         controller = gameObject.AddComponent<CharacterController>();
     }
 
-    void Update()
+    void LateUpdate()
     {
         Vector3 move = new Vector3();
         groundedPlayer = controller.isGrounded;

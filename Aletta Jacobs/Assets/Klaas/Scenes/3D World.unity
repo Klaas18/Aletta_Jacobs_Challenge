@@ -20358,10 +20358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 2.5
   isUsingJoystick: 1
-  _rigidbody: {fileID: 0}
   _joystick: {fileID: 1784375678}
-  _animator: {fileID: 0}
-  _moveSpeed: 0.02
 --- !u!136 &922745244
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20455,12 +20452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f979076309413194db1c292223222efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookSensitivity: 2
   player: {fileID: 922745242}
   myCamera: {fileID: 1947590804}
-  _rigidbody: {fileID: 0}
   _joystick: {fileID: 138487185}
-  _animator: {fileID: 0}
   _moveSpeed: 150
 --- !u!1001 &923893079
 PrefabInstance:
@@ -43723,8 +43717,8 @@ MonoBehaviour:
       colorBlindnessType: 0
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 1
-  m_ShowCustomSorter: 1
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
@@ -45058,10 +45052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 2.5
   isUsingJoystick: 1
-  _rigidbody: {fileID: 0}
   _joystick: {fileID: 0}
-  _animator: {fileID: 0}
-  _moveSpeed: 0
 --- !u!136 &2019457764
 CapsuleCollider:
   m_ObjectHideFlags: 0
