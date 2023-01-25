@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class WaterColor : MonoBehaviour
 {
     [SerializeField] MeshRenderer meshR;
+    [SerializeField] MeshRenderer[] meshRArray;
     [SerializeField] Material newMat;
     [SerializeField] Material oldMat;
     [SerializeField] Toggle toggle;
@@ -18,11 +19,19 @@ public class WaterColor : MonoBehaviour
     public void ChangeWater()
     {
         if (toggle.isOn)
-        {        
+        {
+            for (int i = 0; i < meshRArray.Length; i++)
+            {
+                meshRArray[i].material = newMat;
+            }
             meshR.material = newMat;
         }
         else
         {
+            for (int i = 0; i < meshRArray.Length; i++)
+            {
+                meshRArray[i].material = oldMat;
+            }
             meshR.material = oldMat;
         }
     }

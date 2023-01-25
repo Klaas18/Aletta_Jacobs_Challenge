@@ -109,10 +109,12 @@ public class DebugCanvas : MonoBehaviour
         {
             joyStickCanvas.SetActive(true);
             playerController.isUsingJoystick = true;
+            cameraDrag.isUsingJoystick = true;
         } else if(joyStickToggle.isOn == false)
         {
             joyStickCanvas.SetActive(false);
             playerController.isUsingJoystick = false;
+            cameraDrag.isUsingJoystick = false; 
         }
         
     }

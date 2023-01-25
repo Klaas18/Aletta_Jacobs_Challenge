@@ -11,20 +11,28 @@ public class CameraDrag : MonoBehaviour
 
     [SerializeField] public float _moveSpeed;
 
+    public bool isUsingJoystick = true;
     void FixedUpdate()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    dragOrigin = Input.mousePosition;
-        //    return;
-        //}
 
-        //if (!Input.GetMouseButton(0)) return;
+        if (!isUsingJoystick)
+        {
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    dragOrigin = Input.mousePosition;
+            //    return;
+            //}
+            if (!Input.GetMouseButton(0)) return;
+            player.transform.eulerAngles += (_moveSpeed * Time.deltaTime) * new Vector3(0, Input.GetAxis("Mouse X"), 0);
+            myCamera.transform.eulerAngles += (_moveSpeed * Time.deltaTime) * new Vector3(-Input.GetAxis("Mouse Y"), 0, 0);
+        }
+        else
+        {
 
-        //player.transform.eulerAngles += lookSensitivity * new Vector3(0, Input.GetAxis("Mouse X"), 0);
-        myCamera.transform.eulerAngles -= new Vector3(_joystick.Vertical * (_moveSpeed * Time.deltaTime),0);
-        player.transform.eulerAngles += new Vector3(0, _joystick.Horizontal * (_moveSpeed * Time.deltaTime));
 
+            myCamera.transform.eulerAngles -= new Vector3(_joystick.Vertical * (_moveSpeed * Time.deltaTime), 0);
+            player.transform.eulerAngles += new Vector3(0, _joystick.Horizontal * (_moveSpeed * Time.deltaTime));
 
+        }
     }
 }
