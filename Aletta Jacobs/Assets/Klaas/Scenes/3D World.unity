@@ -20712,6 +20712,8 @@ MonoBehaviour:
   myCamera: {fileID: 1947590804}
   _joystick: {fileID: 138487185}
   _moveSpeed: 150
+  camMin: -70
+  camMax: 70
   isUsingJoystick: 1
 --- !u!1001 &923893079
 PrefabInstance:
