@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class DataReader : MonoBehaviour
 {
+    public People peopleInJson;
+
     public TextAsset jsonFile;
     //private int[] averageAge;
     public List<float> averageAgeL = new List<float>();
@@ -36,7 +38,7 @@ public class DataReader : MonoBehaviour
         int amountOfMales = 0;
         int amountOfFemales = 0;
 
-        People peopleInJson = JsonUtility.FromJson<People>(jsonFile.text);
+        peopleInJson = JsonUtility.FromJson<People>(jsonFile.text);
         foreach (Person person in peopleInJson.DataPage)
         {
             //Debug.Log("Found person age:" + person.AGE + " Person's gender: " + person.GENDER);
@@ -85,5 +87,13 @@ public class DataReader : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public Person GetRandomPerson()
+    {
+        Person person = new Person();
+
+       int randomPersonInt = Random.Range(0, peopleInJson.DataPage.Length);
+       return person = peopleInJson.DataPage[randomPersonInt];
     }
 }
