@@ -11,10 +11,13 @@ public class NPC_Script : MonoBehaviour
     public Person thisPerson;
     public float height = 1.8f; // NPC height in meters
 
+    public Material[] shirtMat;
+    [Header("Movement info")]
     public float moveRadius = 10f;  // Radius within which the NPC will move
     public float waitTime = 2f;     // Time to wait before moving again
     private NavMeshAgent agent;
     private float timer;
+    public bool canWave = false;
 
     [Header("Data")]
     [SerializeField] private DataReader dataReader;
@@ -45,18 +48,21 @@ public class NPC_Script : MonoBehaviour
 
     void Update()
     {
-        // If NPC has reached the destination, wait for a moment before moving again
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        if (!canWave)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0f)
+            // If NPC has reached the destination, wait for a moment before moving again
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
-                MoveToRandomLocation();
-                timer = waitTime;
+                timer -= Time.deltaTime;
+                if (timer <= 0f)
+                {
+                    MoveToRandomLocation();
+                    timer = waitTime;
+                }
             }
         }
         npcAnimator.SetFloat("speed",agent.velocity.magnitude);
-
+        npcAnimator.SetBool("canWave", canWave);
     }
 
     void MoveToRandomLocation()
@@ -96,14 +102,18 @@ public class NPC_Script : MonoBehaviour
 
     public void SetInfo()
     {
+        SkinnedMeshRenderer skinnedMesh = GetComponentInChildren<SkinnedMeshRenderer>();
+
         thisPerson = dataReader.GetRandomPerson();
         if (thisPerson.GENDER == "1")
         {
             genderText.text = "Man";
+            skinnedMesh.materials[0].color = Color.blue;
         }
         else
         {
             genderText.text = "Vrouw";
+            skinnedMesh.materials[0].color = new Color32(255, 192, 203,1    );
         }
 
         ageText.text ="Leeftijd = " + thisPerson.AGE.ToString();

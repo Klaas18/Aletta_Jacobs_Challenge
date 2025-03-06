@@ -15,9 +15,28 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private FixedJoystick _joystick;
 
+
+
     private void Start()
     {
         controller = gameObject.AddComponent<CharacterController>();
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "npc")
+        {
+            other.GetComponent<NPC_Script>().canWave = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "npc")
+        {
+            other.GetComponent<NPC_Script>().canWave = false;
+        }
     }
 
     void LateUpdate()

@@ -982,7 +982,7 @@ GameObject:
   - component: {fileID: 8132967561379608009}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: npc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1087,11 +1087,15 @@ MonoBehaviour:
     SLEEP_QUALITY: 0
     SPORTS_T1: 0
   height: 1.8
+  shirtMat: []
   moveRadius: 10
   waitTime: 2
+  canWave: 0
+  dataReader: {fileID: 0}
   genderText: {fileID: 5980255465663668766}
   ageText: {fileID: 3628903862685092762}
   heightText: {fileID: 8902833968636313989}
+  npcAnimator: {fileID: 258032293452563774}
 --- !u!54 &5980255464910498316
 Rigidbody:
   m_ObjectHideFlags: 0

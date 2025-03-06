@@ -13,6 +13,7 @@ public class DebugCanvas : MonoBehaviour
     [Header("Debug UI")]
     [SerializeField] GameObject debugCanvas;
     [SerializeField] bool isDebugActive = false;
+    [SerializeField] DebugCanvas debugCanvasScript;
 
     [Header("Camera Angle")]
     [SerializeField] Toggle cameraToggle;
@@ -30,10 +31,16 @@ public class DebugCanvas : MonoBehaviour
     [SerializeField] GameObject joyStickCanvas;
     [SerializeField] Toggle joyStickToggle;
 
+
+
     private void Awake()
     {
+        //debugCanvasScript = FindObjectOfType<DebugCanvas>();
         playerController = GetComponentInParent<PlayerController>();
         cameraDrag = GetComponentInParent<CameraDrag>();
+
+       // SetFunctions();
+        //cameraToggle.onValueChanged.AddListener(ChangeCameraAngle);
     }
 
     // Start is called before the first frame update
@@ -56,12 +63,14 @@ public class DebugCanvas : MonoBehaviour
         if (!isDebugActive)
         {
             tempDebug = Instantiate(debugCanvas);
-
-            cameraToggle = GameObject.Find("Camera Angle Toggle").GetComponent<Toggle>();
-            walkSpeedS = GameObject.Find("Walk Slider").GetComponent<Slider>();
-            lookSpeedS = GameObject.Find("Look Slider").GetComponent<Slider>();
-            joyStickToggle = GameObject.Find("JoyStick Toggle").GetComponent<Toggle>();
-
+            try
+            {
+                cameraToggle = GameObject.Find("Camera Angle Toggle").GetComponent<Toggle>();
+                walkSpeedS = GameObject.Find("Walk Slider").GetComponent<Slider>();
+                lookSpeedS = GameObject.Find("Look Slider").GetComponent<Slider>();
+                joyStickToggle = GameObject.Find("JoyStick Toggle").GetComponent<Toggle>();
+            }
+            catch { }
             SetFunctions();
             isDebugActive = true;
         } else
@@ -85,15 +94,31 @@ public class DebugCanvas : MonoBehaviour
         if (isFistPerson)
         {
             firstPersonCamera.enabled = false;
+            topDownCamera.enabled = true;
             isFistPerson = false;
         }
         else if(!isFistPerson)
         {
+
+            topDownCamera.enabled = false;
             firstPersonCamera.enabled = true;
             isFistPerson = true;
         }
     }
 
+    public void CameraAngle()
+    {
+        if (isFistPerson)
+        {
+            firstPersonCamera.enabled = false;
+            isFistPerson = false;
+        }
+        else if (!isFistPerson)
+        {
+            firstPersonCamera.enabled = true;
+            isFistPerson = true;
+        }
+    }
     public void WalkSpeed(float f)
     {
         playerController.playerSpeed = walkSpeedS.value;

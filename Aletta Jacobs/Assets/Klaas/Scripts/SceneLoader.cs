@@ -5,14 +5,14 @@ public class SceneLoader : MonoBehaviour
 {
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);
-        }
+        //if (Input.GetKey(KeyCode.Escape))
+        //{
+        //    SceneManager.LoadScene(0);
+        //}
     }
 
     public void LoadScene(int i)
