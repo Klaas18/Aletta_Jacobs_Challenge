@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Klaas/Scenes/3D World.unity
     guid: 89517f327bf539540bde35ec420fbae8
   - enabled: 1
+    path: Assets/City.unity
+    guid: b13f4094243ac734285c0f54036d9394
+  - enabled: 1
     path: Assets/SimplePoly City - Low Poly Assets/Demo/CityCopy.unity
     guid: 507608a927c267f4dad8c9a2e1bd2ca4
   - enabled: 0
