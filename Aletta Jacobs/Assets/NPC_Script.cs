@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NPC_Script : MonoBehaviour
 {
@@ -8,65 +11,79 @@ public class NPC_Script : MonoBehaviour
     public Person thisPerson;
     public float height = 1.8f; // NPC height in meters
 
-    [Header("Walking Info")]
-    public float moveSpeed = 2f;
-    public float wanderRadius = 5f;
-    public float waitTime = 2f;
+    public float moveRadius = 10f;  // Radius within which the NPC will move
+    public float waitTime = 2f;     // Time to wait before moving again
+    private NavMeshAgent agent;
+    private float timer;
 
-    [Header("Movement Info")]
-    private Vector3 targetPosition;
-    private bool isMoving = false;
-    private Rigidbody rb;
+    [Header("Data")]
+    [SerializeField] private DataReader dataReader;
+
+    [Header("UI Text")]
+    public TextMeshProUGUI genderText;
+    public TextMeshProUGUI ageText;
+    public TextMeshProUGUI heightText;
+
+    [Header("Animations")]
+    public Animator npcAnimator;
+    // Voeg animaties toe
+
+    private void Awake()
+    {
+        
+    }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        agent = GetComponent<NavMeshAgent>();
+        timer = waitTime;
+        MoveToRandomLocation();
 
-        thisPerson = FindObjectOfType<DataReader>().GetRandomPerson();
-
-        transform.localScale = new Vector3(1, Mathf.Round(thisPerson.HEIGHT_T2 /100), 1); // Adjust height
-
-
-        StartCoroutine(Wander());
+        dataReader = FindObjectOfType<DataReader>();
+        SetInfo();
     }
 
-    IEnumerator Wander()
+    void Update()
     {
-        while (true)
+        // If NPC has reached the destination, wait for a moment before moving again
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            if (!isMoving)
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
             {
-                targetPosition = GetRandomPosition();
-                isMoving = true;
+                MoveToRandomLocation();
+                timer = waitTime;
             }
+        }
+        npcAnimator.SetFloat("speed",agent.velocity.magnitude);
 
-            Vector3 direction = (targetPosition - transform.position).normalized;
-            rb.velocity = direction * moveSpeed;
+    }
 
-            if (Vector3.Distance(transform.position, targetPosition) < 0.5f)
-            {
-                rb.velocity = Vector3.zero;
-                isMoving = false;
-                yield return new WaitForSeconds(waitTime);
-            }
-
-            yield return null;
+    void MoveToRandomLocation()
+    {
+        Vector3 randomPoint;
+        if (GetRandomPoint(transform.position, moveRadius, out randomPoint))
+        {
+            agent.SetDestination(randomPoint);
         }
     }
 
-    Vector3 GetRandomPosition()
+    bool GetRandomPoint(Vector3 center, float range, out Vector3 result)
     {
-        Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
-        randomDirection += transform.position;
-        randomDirection.y = transform.position.y;
-        return randomDirection;
-    }
+        for (int i = 0; i < 30; i++) // Try multiple times to find a valid point
+        {
+            Vector3 randomPos = center + UnityEngine.Random.insideUnitSphere * range;
+            randomPos.y = center.y;  // Keep it at the same height
 
-    void OnLookedAt()
-    {
-        // Add player interaction info here
-        // Example: Display NPC name, story, or dialogue
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPos, out hit, range, NavMesh.AllAreas))
+            {
+                result = hit.position;
+                return true;
+            }
+        }
+        result = Vector3.zero;
+        return false;
     }
     private void OnMouseEnter()
     {
@@ -75,5 +92,22 @@ public class NPC_Script : MonoBehaviour
     public void TestShow()
     {
         Debug.Log($"Gender: {thisPerson.GENDER} - Age: {thisPerson.AGE} - Height: {thisPerson.HEIGHT_T2} ");
+    }
+
+    public void SetInfo()
+    {
+        thisPerson = dataReader.GetRandomPerson();
+        if (thisPerson.GENDER == "1")
+        {
+            genderText.text = "Man";
+        }
+        else
+        {
+            genderText.text = "Vrouw";
+        }
+
+        ageText.text ="Leeftijd = " + thisPerson.AGE.ToString();
+
+        heightText.text = "Lengte = "  + Mathf.Round(thisPerson.HEIGHT_T2).ToString();
     }
 }
