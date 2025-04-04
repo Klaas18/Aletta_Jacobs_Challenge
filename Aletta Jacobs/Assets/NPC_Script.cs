@@ -48,8 +48,10 @@ public class NPC_Script : MonoBehaviour
 
     void Update()
     {
+
         if (!canWave)
         {
+            
             // If NPC has reached the destination, wait for a moment before moving again
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
@@ -61,6 +63,10 @@ public class NPC_Script : MonoBehaviour
                 }
             }
         }
+        //else
+        //{
+        //    transform.position.Set(gameObject.transform.position.x, 1.199999f, gameObject.transform.position.z);
+        //}
         npcAnimator.SetFloat("speed",agent.velocity.magnitude);
         npcAnimator.SetBool("canWave", canWave);
     }
